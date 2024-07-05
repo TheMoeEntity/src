@@ -1,6 +1,6 @@
 <?php
 if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
-    header("Location: ../index");
+    header("Location: ../");
     die();
 }
 ?>
@@ -25,6 +25,9 @@ if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
 </head>
 
 <body>
+    <div style="display: none;" class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-0">
@@ -65,9 +68,9 @@ if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
     <!-- plugins:js -->
     <script src="../../vendors/base/vendor.bundle.base.js"></script>
     <script>
+        const loadingOverlay = document.querySelector('#loadingOverlay')
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent default form submission
-
             // Get form data
             const formData = new FormData(this);
             formData.append(
@@ -78,8 +81,8 @@ if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
                 'password',
                 document.getElementById('password').value
             )
-
             // Send form data to server
+            loadingOverlay.style.display = 'flex'
 
             try {
                 const response = await fetch('./login.php', {
@@ -90,9 +93,11 @@ if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
                 const data = await response.json();
                 console.log(data)
                 if (data.success === true) {
+                     errorDiv.textContent = '';
                     // Login successful, redirect to admin page
                     window.location.href = '../';
                 } else {
+                    loadingOverlay.style.display = 'none'
                     // Login failed, display error message
                     const errorDiv = document.getElementById('errorDiv');
                     errorDiv.style.display = 'block';
@@ -100,6 +105,8 @@ if (isset($_COOKIE['farzad_admin']) && $_COOKIE['farzad_admin'] != "") {
                 }
             } catch (error) {
                 console.error('Error:', error);
+            }finally {
+                 loadingOverlay.style.display = 'none'
             }
         });
     </script>

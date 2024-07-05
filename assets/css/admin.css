@@ -152,7 +152,15 @@
     border-radius: 50%;
     overflow: hidden;
 }
-
+.custom-search {
+    margin-bottom:10px;
+    width:50%;
+}
+.custom-searchInput {
+    border:1px solid #D8D8D8;
+     border-radius: 20px;
+      padding: 6px 15px;
+}
 .blog-aside .widget-author h6 {
     font-weight: 600;
     color: #20247b;

@@ -25,6 +25,7 @@ if (isset($_POST["submit"])) {
   <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
@@ -240,6 +241,7 @@ if (isset($_POST["submit"])) {
                       <tbody id="posts-table">
                       </tbody>
                     </table> -->
+                     <div class="custom-search"></div>
                     <table id="posts-table" class="table table-striped">
                       <thead>
                         <tr>
@@ -485,6 +487,9 @@ if (isset($_POST["submit"])) {
     <script src="assets/js/dashboard.js"></script>
     <!-- <script src="assets/js/Chart.roundedBarCharts.js"></script> -->
     <!-- End custom js for this page-->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 </body>
 
 </html>

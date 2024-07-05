@@ -89,6 +89,10 @@ export class Helpers {
           }
         ],
         pageLength: 10,
+        initComplete: function() {
+          const searchBox = $('#posts-table_filter input')
+          searchBox.attr('placeholder', 'Search posts...').addClass('custom-searchInput');
+        }
       });
     } catch (error) {
       console.error('Error setting up DataTable:', error);
